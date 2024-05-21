@@ -12,7 +12,7 @@ I started this project in order to learn some basics about embedded systems. Bef
 I had some programming and physics knowledge to help me get started though. During this project I learned a lot about arduino microcontrollers and electronics. 
 Aside from basic arduino functionality I learned especially about interrupts. Because all troubles caused by cheap arduino clone, I also learned little about bootloaders, and drivers.
 
-As this was my first embedded project, in this document I try to list solutions to many things that made me as beginner bang my head against the wall.
+As this was my first embedded project, in this document I included problems section that includes fixes to issues I had most trouble with.
 
 NOTE! This documentation is being made almost a year after completion of this project! Documentation in code file is in finnish. Sorry!
 
@@ -21,6 +21,15 @@ NOTE! This documentation is being made almost a year after completion of this pr
    ```bash
    git clone https://github.com/cL4ssiK/SpeedTester.git
    ```
+
+## Usage
+1. Build the circuit presented in scematics.
+2. Open speedtester.ino in arduino IDE.
+3. Connect arduino to the computer via USB cable
+4. Press the upload button in the IDE.
+
+After successful upload all leds blink three times to indicate game is about to begin.
+If you want to play again, either unplug and replug the power source, or press reset button logated in the arduino board.
 
 ## Project setup
 This section provides list of equipment used in project.
@@ -50,16 +59,7 @@ For simplicity, I have coloured the leds and buttons that interact with each oth
 
 NOTE! 
 - Differing from scematic presented, you can use usb port to power on the microcontroller.
-- Many arduino boards (if not all) have build in pull-up resistors. This variation is presented in variations section.
-
-## Usage
-1. Build the circuit presented in scematics.
-2. Open speedtester.ino in arduino IDE.
-3. Connect arduino to the computer via USB cable
-4. Press the upload button in the IDE.
-
-After successful upload all leds blink three times to indicate game is about to begin.
-If you want to play again, either unplug and replug the power source, or press reset button logated in the arduino board.
+- Many arduino boards (if not all) have build in pull-up resistors. This variation is presented in variations section. TBA
 
 ## Software
 If you think for a while how single thread program is run, it raises an issue. How is it possible to time listening correctly for each button while running the program? 
@@ -120,6 +120,12 @@ This keyword makes sure, that every read and write to that variable is actually 
 Rest of the code does not contain any interesting features, so we do not analyze it here.
 
 More information about Interrupts.[1]
+
+## Problems and challenges
+- If IDE does not upload code properly you might not have proper USB drivers installed. Many clones use CH340x usb bus converter chip and at least windows does not have       drivers for that as default. I don't remember where I downloaded the drivers myself, but [learn.sparkfun.com](https://learn.sparkfun.com/tutorials/how-to-install-ch340-drivers) seems to have legit looking guide. 
+- If you still have issues uploading you might have problem with bootloader. I encountered this one as well with my arduino clones.
+  To fix this you can burn bootloader using working arduino like shown in [this video](https://www.youtube.com/watch?v=67mOulsol80).
+- Still not working? Try using legacy version of the arduino IDE. I had this issue with clones that had ATMega328P microcontroller on them. It did not work on the latest      version of the IDE. I downgraded the ide to version 1.8.x and opened serial monitor before uploading the sketch. This way I had no issues. 
 
 ## Credits
 
