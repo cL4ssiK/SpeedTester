@@ -15,7 +15,7 @@ volatile int buttonPressedPin = -1;
 // Ennalta määrätty PCI metodi portille B (pins D8:D13)
 // Rekisteröi mitä näppäintä painettiin.
 ISR (PCINT0_vect) {
-  if ( digitalRead(buttonRed)  == LOW ) {
+  if ( digitalRead(buttonRed)  == LOW ) { // == HIGH jos käytetään pulldown vastuksia kytkimissä.
     buttonPressedPin = buttonRed;
   }
   else if ( digitalRead(buttonGreen)  == LOW ) {
