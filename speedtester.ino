@@ -15,13 +15,13 @@ volatile int buttonPressedPin = -1;
 // Ennalta määrätty PCI metodi portille B (pins D8:D13)
 // Rekisteröi mitä näppäintä painettiin.
 ISR (PCINT0_vect) {
-  if ( digitalRead(buttonRed)  == LOW ) { // == HIGH jos käytetään pulldown vastuksia kytkimissä.
+  if ( digitalRead(buttonRed)  == HIGH ) { // == LOW jos käytetään pull-up vastuksia kytkimissä.
     buttonPressedPin = buttonRed;
   }
-  else if ( digitalRead(buttonGreen)  == LOW ) {
+  else if ( digitalRead(buttonGreen)  == HIGH ) {
     buttonPressedPin = buttonGreen;
   }
-  else if ( digitalRead(buttonBlue)  == LOW ) {
+  else if ( digitalRead(buttonBlue)  == HIGH ) {
     buttonPressedPin = buttonBlue;
   }
 }
@@ -30,7 +30,7 @@ ISR (PCINT0_vect) {
 void setup() {
   // Enable PCIE0 Bit0 = 1 (Port B)
   PCICR |= B00000001;
-  // Valitaan PCINT3 Bit4, 3, 2 = 1 (Port D12, D11, D10)
+  // Valitaan PCINT3 Bit4, 3, 0 = 1 (Port D12, D11, D8)
   PCMSK0 |= B00011001;
   // Ottaa käyttöön siemenen random numeroille väliltä 0-1023 riippuen analog pin A0 inputista. Saadaan ympäröivän magneettikentän muutoksesta jokin random jännite.
   randomSeed(analogRead(A0));
