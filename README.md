@@ -81,13 +81,13 @@ Then we need to define the interrupt service routine (ISR). Names of these metho
 For port B we use ISR(PCINT0_vect) ([Lines 17-27](https://github.com/cL4ssiK/SpeedTester/blob/69b926862b1b185bcbb9c5f54a77d491051d69cc/speedtester.ino#L17)):
   ```
   ISR (PCINT0_vect) {
-    if ( digitalRead(buttonRed)  == LOW ) {
+    if ( digitalRead(buttonRed)  == HIGH ) {
       buttonPressedPin = buttonRed;
     }
-    else if ( digitalRead(buttonGreen)  == LOW ) {
+    else if ( digitalRead(buttonGreen)  == HIGH ) {
       buttonPressedPin = buttonGreen;
     }
-    else if ( digitalRead(buttonBlue)  == LOW ) {
+    else if ( digitalRead(buttonBlue)  == HIGH ) {
       buttonPressedPin = buttonBlue;
     }
   }
