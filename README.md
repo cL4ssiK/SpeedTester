@@ -10,7 +10,10 @@ In the beginning all three leds will flash three times to indicate game is about
 
 I started this project in order to learn some basics about embedded systems. Before this project I had no practical experience with any microcontrollers or programming them. 
 I had some programming and physics knowledge to help me get started though. During this project I learned a lot about arduino microcontrollers and electronics. 
-Aside from basic arduino functionality I learned especially about interrupts. Because all troubles caused by cheap arduino clone, I also learned little about bootloaders, and drivers.
+Aside from basic arduino functionality I learned especially about interrupts. Because all the troubles caused by cheap arduino clone, I also learned little about bootloaders, and drivers.
+I think I reached the goal of this project, even though it does not work perfectly. There was some trouble with button push not registering. I think it was because of poor quality breadboard and switches.
+
+If I would continue this project, I would implement small screen to it in order to present scores. For this I need to upgrade microcontroller to ATMega328p because 168 does not have enough memory for use of libraries for the screen. Also the code could be improved a lot.
 
 As this was my first embedded project, in this document I included problems section that includes fixes to issues I had most trouble with.
 
